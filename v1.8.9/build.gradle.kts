@@ -57,11 +57,11 @@ loom {
     }
 }
 
-sourceSets.main {
-    java.srcDir("../shared/java")
-    resources.srcDir("../shared/resources")
-    output.setResourcesDir(sourceSets.main.flatMap { it.java.classesDirectory })
-}
+//sourceSets.main {
+//    java.srcDir("../shared/java")
+//    resources.srcDir("../shared/resources")
+//    output.setResourcesDir(sourceSets.main.flatMap { it.java.classesDirectory })
+//}
 
 // Dependencies:
 
@@ -88,6 +88,8 @@ dependencies {
     minecraft("com.mojang:minecraft:1.8.9")
     mappings("de.oceanlabs.mcp:mcp_stable:22-1.8.9")
     forge("net.minecraftforge:forge:1.8.9-11.15.1.2318-1.8.9")
+
+    implementation("top.fpsmaster:core:4.0")
 
     // If you don't want mixins, remove these lines
     shadowImpl("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
