@@ -1,0 +1,4 @@
+rootProject.name = 'FPSMaster'
+
+includeBuild("core")
+includeBuild("v1.8.9")
