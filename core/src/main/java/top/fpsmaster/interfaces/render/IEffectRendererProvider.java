@@ -1,7 +1,7 @@
 package top.fpsmaster.interfaces.render;
 
-import top.fpsmaster.wrapper.blockpos.WrapperBlockPos;
+import top.fpsmaster.interfaces.game.IWrapperBlockPosProvider;
 
 public interface IEffectRendererProvider {
-    void addRedStoneBreak(WrapperBlockPos pos);
+    void addRedStoneBreak(IWrapperBlockPosProvider pos);
 }

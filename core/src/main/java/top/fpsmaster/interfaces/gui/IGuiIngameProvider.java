@@ -1,7 +1,7 @@
 package top.fpsmaster.interfaces.gui;
 
-import net.minecraft.entity.Entity;
+import top.fpsmaster.interfaces.game.IEntityProvider;
 
 public interface IGuiIngameProvider {
-    void drawHealth(Entity entityIn);
+    void drawHealth(IEntityProvider entityIn);
 }

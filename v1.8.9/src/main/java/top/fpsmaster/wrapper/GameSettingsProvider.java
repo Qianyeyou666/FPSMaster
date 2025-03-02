@@ -3,9 +3,12 @@ package top.fpsmaster.wrapper;
 import net.minecraft.client.settings.KeyBinding;
 import top.fpsmaster.forge.api.IKeyBinding;
 import top.fpsmaster.interfaces.game.IGameSettings;
+import top.fpsmaster.interfaces.game.IKeyBindingProvider;
 
 public class GameSettingsProvider implements IGameSettings {
-    public void setKeyPress(KeyBinding key, boolean value){
+
+    @Override
+    public void setKeyPress(IKeyBindingProvider key, boolean value) {
         ((IKeyBinding) key).setPressed(value);
     }
 }

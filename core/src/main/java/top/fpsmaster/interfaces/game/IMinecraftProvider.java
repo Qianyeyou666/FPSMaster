@@ -1,29 +1,28 @@
 package top.fpsmaster.interfaces.game;
 
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.network.NetworkPlayerInfo;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Session;
 import top.fpsmaster.interfaces.IProvider;
+import top.fpsmaster.interfaces.gui.IFontRendererProvider;
+import top.fpsmaster.interfaces.gui.IGuiScreenProvider;
+
 import java.io.File;
 import java.util.Collection;
 
 public interface IMinecraftProvider extends IProvider {
     Object getCurrentScreen();
     File getGameDir();
-    FontRenderer getFontRenderer();
-    EntityPlayerSP getPlayer();
+    IFontRendererProvider getFontRenderer();
+    IEntityPlayerSPProvider getPlayer();
     boolean isHoveringOverBlock();
-    ItemStack getPlayerHeldItem();
-    WorldClient getWorld();
-    ItemStack[] getArmorInventory();
-    void setSession(Session mojang);
+    IItemStackProvider getPlayerHeldItem();
+    IWorldClientProvider getWorld();
+    IItemStackProvider[] getArmorInventory();
+    void setSession(ISessionProvider mojang);
     Integer getRespondTime();
     void drawString(String text, float x, float y, int color);
     String getServerAddress();
     void removeClickDelay();
     void printChatMessage(Object message);
-    Collection<NetworkPlayerInfo> getPlayerInfoMap();
+    Collection<INetworkPlayerInfoProvider> getPlayerInfoMap();
+
+    void displayGuiScreen(IGuiScreenProvider gui);
 }

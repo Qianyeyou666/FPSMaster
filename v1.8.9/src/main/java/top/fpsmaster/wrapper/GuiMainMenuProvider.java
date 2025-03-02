@@ -13,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.glu.Project;
 import top.fpsmaster.interfaces.gui.IGuiMainMenuProvider;
+import top.fpsmaster.interfaces.gui.IGuiScreenProvider;
+
 import static top.fpsmaster.utils.Utility.mc;
 
 public class GuiMainMenuProvider implements IGuiMainMenuProvider {
@@ -177,7 +179,8 @@ public class GuiMainMenuProvider implements IGuiMainMenuProvider {
     }
 
     @Override
-    public void showSinglePlayer(@NotNull GuiScreen screen) {
+    public void showSinglePlayer(IGuiScreenProvider screen) {
         mc.displayGuiScreen(new GuiSelectWorld(screen));
+
     }
 }

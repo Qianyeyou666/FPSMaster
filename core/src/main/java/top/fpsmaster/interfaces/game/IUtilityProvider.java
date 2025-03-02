@@ -1,15 +1,11 @@
 package top.fpsmaster.interfaces.game;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ResourceLocation;
 import top.fpsmaster.interfaces.IProvider;
 
 public interface IUtilityProvider extends IProvider {
-    String getResourcePath(ResourceLocation resourceLocation);
-    double getDistanceToEntity(Entity e1, Entity e2);
-    boolean isItemEnhancementEmpty(ItemStack i);
-    int getPotionIconIndex(PotionEffect effect);
+    String getResourcePath(IResourceLocationProvider resourceLocation);
+    double getDistanceToEntity(IEntityProvider e1, IEntityProvider e2);
+    boolean isItemEnhancementEmpty(IItemStackProvider i);
+    int getPotionIconIndex(IPotionEffectProvider effect);
     Object makeChatComponent(String msg);
 }
