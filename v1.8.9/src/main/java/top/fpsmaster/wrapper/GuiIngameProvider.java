@@ -12,12 +12,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.MathHelper;
 import org.jetbrains.annotations.NotNull;
+import top.fpsmaster.interfaces.game.IEntityProvider;
 import top.fpsmaster.interfaces.gui.IGuiIngameProvider;
 
 import java.util.Random;
 
 import static net.minecraft.client.gui.Gui.icons;
-import static top.fpsmaster.utils.Utility.mc;
 
 public class GuiIngameProvider implements IGuiIngameProvider {
     protected static final Random rand = new Random();
@@ -26,21 +26,21 @@ public class GuiIngameProvider implements IGuiIngameProvider {
     protected static long lastSystemTime = 0L;
     protected static long healthUpdateCounter = 0L;
 
-    public void drawHealth(@NotNull Entity entity) {
+    public void drawHealth(IEntityProvider entity) {
         if (!(entity instanceof EntityPlayer))
             return;
-        mc.getTextureManager().bindTexture(icons);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(icons);
         GlStateManager.enableBlend();
         GlStateManager.enableTexture2D();
         EntityPlayer entityPlayer = (EntityPlayer) entity;
         int i = MathHelper.ceiling_float_int(entityPlayer.getHealth());
-        boolean bl = healthUpdateCounter > (long) mc.ingameGUI.getUpdateCounter() && (healthUpdateCounter - (long) mc.ingameGUI.getUpdateCounter()) / 3L % 2L == 1L;
+        boolean bl = healthUpdateCounter > (long) Minecraft.getMinecraft().ingameGUI.getUpdateCounter() && (healthUpdateCounter - (long) Minecraft.getMinecraft().ingameGUI.getUpdateCounter()) / 3L % 2L == 1L;
         if (i < playerHealth && entityPlayer.hurtResistantTime > 0) {
             lastSystemTime = Minecraft.getSystemTime();
-            healthUpdateCounter = mc.ingameGUI.getUpdateCounter() + 20;
+            healthUpdateCounter = Minecraft.getMinecraft().ingameGUI.getUpdateCounter() + 20;
         } else if (i > playerHealth && entityPlayer.hurtResistantTime > 0) {
             lastSystemTime = Minecraft.getSystemTime();
-            healthUpdateCounter = mc.ingameGUI.getUpdateCounter() + 10;
+            healthUpdateCounter = Minecraft.getMinecraft().ingameGUI.getUpdateCounter() + 10;
         }
 
         if (Minecraft.getSystemTime() - lastSystemTime > 1000L) {
@@ -51,7 +51,7 @@ public class GuiIngameProvider implements IGuiIngameProvider {
 
         playerHealth = i;
         int j = lastPlayerHealth;
-        rand.setSeed(mc.ingameGUI.getUpdateCounter() * 312871L);
+        rand.setSeed(Minecraft.getMinecraft().ingameGUI.getUpdateCounter() * 312871L);
         IAttributeInstance iAttributeInstance = entityPlayer.getEntityAttribute(SharedMonsterAttributes.maxHealth);
         int m = -45;
         int o = -10;
@@ -64,7 +64,7 @@ public class GuiIngameProvider implements IGuiIngameProvider {
         int s = entityPlayer.getTotalArmorValue();
         int t = -1;
         if (entityPlayer.isPotionActive(Potion.regeneration)) {
-            t = mc.ingameGUI.getUpdateCounter() % MathHelper.ceiling_float_int(f + 5.0F);
+            t = Minecraft.getMinecraft().ingameGUI.getUpdateCounter() % MathHelper.ceiling_float_int(f + 5.0F);
         }
 
         int u;

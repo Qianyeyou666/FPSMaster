@@ -7,7 +7,6 @@ import top.fpsmaster.features.impl.interfaces.PlayerDisplay;
 import top.fpsmaster.font.impl.UFontRenderer;
 import top.fpsmaster.ui.custom.Component;
 import top.fpsmaster.utils.render.Render2DUtils;
-import top.fpsmaster.interfaces.ProviderManager;
 
 import java.awt.Color;
 

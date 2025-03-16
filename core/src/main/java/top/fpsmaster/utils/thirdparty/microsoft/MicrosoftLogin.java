@@ -2,7 +2,6 @@ package top.fpsmaster.utils.thirdparty.microsoft;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 import net.minecraft.util.Session;
 import org.apache.http.NameValuePair;
@@ -18,7 +17,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import top.fpsmaster.ui.screens.account.GuiWaiting;
-import top.fpsmaster.interfaces.ProviderManager;
 
 import java.awt.Desktop;
 import java.io.IOException;

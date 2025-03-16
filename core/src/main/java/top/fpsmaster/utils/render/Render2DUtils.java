@@ -15,8 +15,6 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL14;
 import org.lwjgl.opengl.GL20;
 import top.fpsmaster.features.impl.interfaces.ClientSettings;
-import top.fpsmaster.features.impl.render.MotionBlur;
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.ui.screens.mainmenu.MainMenu;
 import top.fpsmaster.utils.Utility;
 import top.fpsmaster.utils.awt.AWTUtils;

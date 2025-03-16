@@ -1,4 +1,5 @@
 package top.fpsmaster.interfaces.game;
 
-public class IResourceLocationProvider {
+public interface IResourceLocationProvider {
+    String getResourcePath();
 }

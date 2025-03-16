@@ -9,8 +9,6 @@ import top.fpsmaster.features.settings.impl.BooleanSetting;
 import top.fpsmaster.utils.Utility;
 import top.fpsmaster.utils.math.MathTimer;
 import top.fpsmaster.websocket.client.WsClient;
-import top.fpsmaster.interfaces.ProviderManager;
-import top.fpsmaster.modules.dev.DevMode;
 
 import java.net.URISyntaxException;
 

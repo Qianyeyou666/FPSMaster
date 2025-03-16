@@ -15,7 +15,6 @@ import top.fpsmaster.features.settings.impl.ColorSetting;
 import top.fpsmaster.features.settings.impl.NumberSetting;
 import top.fpsmaster.utils.math.animation.AnimationUtils;
 import top.fpsmaster.utils.render.Render2DUtils;
-import top.fpsmaster.interfaces.ProviderManager;
 
 import java.awt.Color;
 

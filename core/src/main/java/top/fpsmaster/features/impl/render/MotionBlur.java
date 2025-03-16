@@ -13,7 +13,6 @@ import top.fpsmaster.event.events.EventMotionBlur;
 import top.fpsmaster.features.manager.Category;
 import top.fpsmaster.features.manager.Module;
 import top.fpsmaster.features.settings.impl.NumberSetting;
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.utils.OptifineUtil;
 import top.fpsmaster.wrapper.renderEngine.bufferbuilder.WrapperBufferBuilder;
 

@@ -1,6 +1,5 @@
 package top.fpsmaster.utils.os;
 
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.modules.logger.ClientLogger;
 import top.fpsmaster.wrapper.Constants;
 

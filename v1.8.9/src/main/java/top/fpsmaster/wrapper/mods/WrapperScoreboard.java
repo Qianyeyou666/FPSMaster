@@ -10,10 +10,7 @@ import top.fpsmaster.font.impl.UFontRenderer;
 import top.fpsmaster.features.impl.InterfaceModule;
 import top.fpsmaster.features.impl.interfaces.Scoreboard;
 import top.fpsmaster.ui.custom.impl.ScoreboardComponent;
-import top.fpsmaster.utils.render.Render2DUtils;
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.wrapper.TextFormattingProvider;
-import top.fpsmaster.wrapper.WorldClientProvider;
 
 import java.util.Collection;
 import java.util.List;

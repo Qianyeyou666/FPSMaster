@@ -16,7 +16,6 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 import top.fpsmaster.FPSMaster;
 import top.fpsmaster.font.impl.UFontRenderer;
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.ui.click.component.ScrollContainer;
 import top.fpsmaster.ui.common.GuiButton;
 import top.fpsmaster.ui.screens.mainmenu.MainMenu;

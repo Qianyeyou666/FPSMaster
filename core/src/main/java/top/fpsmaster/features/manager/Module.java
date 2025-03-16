@@ -10,7 +10,6 @@ import top.fpsmaster.features.settings.impl.ModeSetting;
 import top.fpsmaster.features.settings.impl.NumberSetting;
 import top.fpsmaster.features.settings.impl.TextSetting;
 import top.fpsmaster.features.settings.impl.ColorSetting;
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.ui.notification.NotificationManager;
 
 import java.util.LinkedList;

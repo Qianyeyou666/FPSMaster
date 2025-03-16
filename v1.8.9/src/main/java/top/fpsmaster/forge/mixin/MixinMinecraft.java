@@ -29,12 +29,10 @@ import top.fpsmaster.event.events.EventKey;
 import top.fpsmaster.event.events.EventMouseClick;
 import top.fpsmaster.event.events.EventTick;
 import top.fpsmaster.features.impl.optimizes.Performance;
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.utils.render.Render2DUtils;
 
 import javax.annotation.Nullable;
 import java.awt.*;
-import java.util.Iterator;
 
 import static top.fpsmaster.FPSMaster.getClientTitle;
 

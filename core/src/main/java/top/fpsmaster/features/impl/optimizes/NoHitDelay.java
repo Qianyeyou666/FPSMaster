@@ -4,7 +4,6 @@ import top.fpsmaster.event.Subscribe;
 import top.fpsmaster.event.events.EventTick;
 import top.fpsmaster.features.manager.Category;
 import top.fpsmaster.features.manager.Module;
-import top.fpsmaster.interfaces.ProviderManager;
 
 public class NoHitDelay extends Module {
 

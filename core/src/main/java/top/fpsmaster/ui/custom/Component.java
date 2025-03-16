@@ -13,7 +13,6 @@ import top.fpsmaster.ui.click.MainPanel;
 import top.fpsmaster.utils.Utility;
 import top.fpsmaster.utils.math.animation.AnimationUtils;
 import top.fpsmaster.utils.render.Render2DUtils;
-import top.fpsmaster.interfaces.ProviderManager;
 
 import java.awt.Color;
 

@@ -9,14 +9,12 @@ import top.fpsmaster.event.Subscribe;
 import top.fpsmaster.event.events.EventRender3D;
 import top.fpsmaster.features.manager.Category;
 import top.fpsmaster.features.manager.Module;
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.utils.math.MathTimer;
 import top.fpsmaster.wrapper.entities.EntityTNTPrimedUtil;
 
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DamageIndicator extends Module {
     public DamageIndicator() {

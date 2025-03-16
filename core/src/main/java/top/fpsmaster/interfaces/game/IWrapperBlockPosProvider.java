@@ -1,4 +1,6 @@
 package top.fpsmaster.interfaces.game;
 
-public class IWrapperBlockPosProvider {
+public interface IWrapperBlockPosProvider {
+    Object getObject();
+
 }

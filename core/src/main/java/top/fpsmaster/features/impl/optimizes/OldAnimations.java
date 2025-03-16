@@ -8,7 +8,6 @@ import top.fpsmaster.features.manager.Category;
 import top.fpsmaster.features.manager.Module;
 import top.fpsmaster.features.settings.impl.BooleanSetting;
 import top.fpsmaster.features.settings.impl.NumberSetting;
-import top.fpsmaster.interfaces.ProviderManager;
 
 public class OldAnimations extends Module {
 

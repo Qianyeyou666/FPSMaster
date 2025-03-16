@@ -1,10 +1,10 @@
 package top.fpsmaster;
 
-import net.minecraftforge.fml.common.FMLCommonHandler;
 import top.fpsmaster.features.GlobalSubmitter;
 import top.fpsmaster.features.command.CommandManager;
 import top.fpsmaster.features.manager.ModuleManager;
 import top.fpsmaster.font.FontManager;
+import top.fpsmaster.interfaces.game.IMinecraftWrapper;
 import top.fpsmaster.modules.account.AccountManager;
 import top.fpsmaster.modules.client.AsyncTask;
 import top.fpsmaster.modules.config.ConfigManager;
@@ -24,23 +24,19 @@ import top.fpsmaster.modules.i18n.Language;
 import top.fpsmaster.utils.os.HttpRequest;
 import top.fpsmaster.utils.thirdparty.github.UpdateChecker;
 import top.fpsmaster.websocket.client.WsClient;
-import top.fpsmaster.wrapper.Constants;
 
 import java.io.File;
 
 public class FPSMaster {
 
+
+    public static FPSMaster INSTANCE;
     public boolean hasOptifine;
-    public boolean loggedIn;
-    public WsClient wsClient;
 
     public static final String phase = "alpha";
     public static final String SERVICE_API = "https://service.fpsmaster.top";
 
-    public static final String EDITION = Constants.EDITION;
     public static final String COPYRIGHT = "Copyright ©2020-2024  FPSMaster Team  All Rights Reserved.";
-
-    public static FPSMaster INSTANCE = new FPSMaster();
 
     public static String CLIENT_NAME = "FPSMaster";
     public static String CLIENT_VERSION = "v4";
@@ -64,6 +60,12 @@ public class FPSMaster {
     public static boolean updateFailed = false;
     public static String latest = "";
 
+    public static IMinecraftWrapper mc;
+
+    public FPSMaster(IMinecraftWrapper wrapper) {
+        mc = wrapper;
+    }
+
     private static void checkDevelopment() {
         try {
             Class.forName("net.fabricmc.devlaunchinjector.Main");
@@ -74,7 +76,7 @@ public class FPSMaster {
 
     public static String getClientTitle() {
         checkDevelopment();
-        return CLIENT_NAME + " " + CLIENT_VERSION + " - " + phase + " " + Constants.VERSION + " (" + GitInfo.getBranch() + " - " + GitInfo.getCommitIdAbbrev() + ")" + (development ? " - Developer Mode" : "");
+        return CLIENT_NAME + " " + CLIENT_VERSION + " - " + phase + " " + mc.getVersion() + " (" + GitInfo.getBranch() + " - " + GitInfo.getCommitIdAbbrev() + ")" + (development ? " - Developer Mode" : "");
     }
 
     private void initializeFonts() {
@@ -192,7 +194,7 @@ public class FPSMaster {
     }
 
     public void autoUpdate() {
-        File mods = FMLCommonHandler.instance().getMinecraftServerInstance().getFile("mods");
+//        File mods = FMLCommonHandler.instance().getMinecraftServerInstance().getFile("mods");
     }
 
     public void shutdown() {

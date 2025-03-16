@@ -12,7 +12,6 @@ import top.fpsmaster.event.events.EventAttack;
 import top.fpsmaster.features.impl.InterfaceModule;
 import top.fpsmaster.features.manager.Category;
 import top.fpsmaster.features.settings.impl.ColorSetting;
-import top.fpsmaster.interfaces.ProviderManager;
 import top.fpsmaster.wrapper.util.WrapperAxisAlignedBB;
 import top.fpsmaster.wrapper.util.WrapperVec3;
 

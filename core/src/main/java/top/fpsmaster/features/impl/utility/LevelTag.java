@@ -12,7 +12,6 @@ import top.fpsmaster.features.manager.Category;
 import top.fpsmaster.features.manager.Module;
 import top.fpsmaster.features.settings.impl.BooleanSetting;
 import top.fpsmaster.features.settings.impl.ModeSetting;
-import top.fpsmaster.interfaces.ProviderManager;
 
 import static top.fpsmaster.utils.Utility.mc;
 
