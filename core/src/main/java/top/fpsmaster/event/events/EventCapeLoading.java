@@ -1,18 +1,18 @@
 package top.fpsmaster.event.events;
 
-import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.util.ResourceLocation;
+import top.fpsmaster.FPSMaster;
 import top.fpsmaster.event.CancelableEvent;
+import top.fpsmaster.interfaces.game.IResourceLocationWrapper;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class EventCapeLoading extends CancelableEvent {
-    Map<String, ResourceLocation> capeCache = new HashMap<>();
+    Map<String, IResourceLocationWrapper> capeCache = new HashMap<>();
 
     public String playerName;
     public AbstractClientPlayer player;
-    public ResourceLocation cape;
+    public IResourceLocationWrapper cape;
 
     public EventCapeLoading(String playerName, AbstractClientPlayer player) {
         this.playerName = playerName;
@@ -23,7 +23,7 @@ public class EventCapeLoading extends CancelableEvent {
         if (capeCache.containsKey(cape)) {
             this.cape = capeCache.get(cape);
         } else {
-            this.cape = new ResourceLocation(cape);
+            this.cape = FPSMaster.mc.getUtilityWrapper().getResourceLocation(cape);
             capeCache.put(cape, this.cape);
         }
     }

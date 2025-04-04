@@ -1,5 +1,6 @@
 package top.fpsmaster.forge.mixin;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.*;
@@ -20,10 +21,7 @@ import top.fpsmaster.event.EventDispatcher;
 import top.fpsmaster.event.events.EventAnimation;
 import top.fpsmaster.features.impl.optimizes.OldAnimations;
 import top.fpsmaster.features.impl.render.FireModifier;
-
 import java.awt.*;
-
-import static top.fpsmaster.utils.Utility.mc;
 
 @Mixin(ItemRenderer.class)
 public abstract class MixinItemRenderer {
@@ -83,8 +81,8 @@ public abstract class MixinItemRenderer {
 
             for (int i = 0; i < 2; ++i) {
                 GlStateManager.pushMatrix();
-                TextureAtlasSprite textureatlassprite = mc.getTextureMapBlocks().getAtlasSprite("minecraft:blocks/fire_layer_1");
-                mc.getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
+                TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite("minecraft:blocks/fire_layer_1");
+                Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
                 float f1 = textureatlassprite.getMinU();
                 float f2 = textureatlassprite.getMaxU();
                 float f3 = textureatlassprite.getMinV();
@@ -126,7 +124,7 @@ public abstract class MixinItemRenderer {
     @Overwrite
     public void renderItemInFirstPerson(float partialTicks) {
         float f = 1.0F - (this.prevEquippedProgress + (this.equippedProgress - this.prevEquippedProgress) * partialTicks);
-        AbstractClientPlayer abstractclientplayer = mc.thePlayer;
+        AbstractClientPlayer abstractclientplayer = Minecraft.getMinecraft().thePlayer;
         float f1 = abstractclientplayer.getSwingProgress(partialTicks);
         float f2 = abstractclientplayer.prevRotationPitch + (abstractclientplayer.rotationPitch - abstractclientplayer.prevRotationPitch) * partialTicks;
         float f3 = abstractclientplayer.prevRotationYaw + (abstractclientplayer.rotationYaw - abstractclientplayer.prevRotationYaw) * partialTicks;
@@ -144,7 +142,7 @@ public abstract class MixinItemRenderer {
                 GlStateManager.translate(0.08F, -0.027F, -0.33F);
                 GlStateManager.scale(0.93F, 1.0F, 1.0F);
             }
-            if (OldAnimations.oldSwing.getValue() && f1 != 0.0F && !mc.thePlayer.isBlocking() && !mc.thePlayer.isEating() && !mc.thePlayer.isUsingItem()) {
+            if (OldAnimations.oldSwing.getValue() && f1 != 0.0F && !Minecraft.getMinecraft().thePlayer.isBlocking() && !Minecraft.getMinecraft().thePlayer.isEating() && !Minecraft.getMinecraft().thePlayer.isUsingItem()) {
                 GlStateManager.scale(0.85F, 0.85F, 0.85F);
                 GlStateManager.translate(-0.06F, 0.003F, 0.05F);
             }
@@ -164,7 +162,7 @@ public abstract class MixinItemRenderer {
                         EventAnimation use = new EventAnimation(EventAnimation.Type.USE, f, f1);
                         EventDispatcher.dispatchEvent(use);
                         if (!use.isCanceled()) {
-                            this.performDrinking(mc.thePlayer, partialTicks);
+                            this.performDrinking(Minecraft.getMinecraft().thePlayer, partialTicks);
                             this.transformFirstPersonItem(f, f1);
                         }
                         break;
@@ -192,7 +190,7 @@ public abstract class MixinItemRenderer {
                             } else {
                                 this.transformFirstPersonItem(f, 0.0F);
                             }
-                            this.doBowTransformations(partialTicks, mc.thePlayer);
+                            this.doBowTransformations(partialTicks, Minecraft.getMinecraft().thePlayer);
                         }
                 }
             } else {

@@ -1,4 +1,9 @@
 package top.fpsmaster.interfaces.game;
 
-public interface IEntityPlayerSPWrapper {
+import java.util.ArrayList;
+
+public interface IEntityPlayerSPWrapper extends IEntityWrapper {
+    int getHurtTime();
+
+    ArrayList<IPotionEffectWrapper> getActivePotionEffects();
 }

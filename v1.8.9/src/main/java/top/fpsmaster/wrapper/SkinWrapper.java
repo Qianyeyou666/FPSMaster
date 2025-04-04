@@ -14,9 +14,11 @@ import top.fpsmaster.utils.os.HttpRequest;
 import java.util.Objects;
 import java.util.UUID;
 
+import static top.fpsmaster.FPSMaster.mc;
+
 public class SkinWrapper implements ISkinWrapper {
     public void updateSkin(String name, String uuid, String skin) {
-        if (ProviderManager.mcProvider.getPlayer() != null && !skin.isEmpty()) {
+        if (mc.getPlayer() != null && !skin.isEmpty()) {
             Minecraft mc = Minecraft.getMinecraft();
             NetworkPlayerInfo info = new NetworkPlayerInfo(new GameProfile(UUID.fromString(uuid), name));
 

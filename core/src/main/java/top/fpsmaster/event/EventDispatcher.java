@@ -18,7 +18,7 @@ public class EventDispatcher {
                 if (Event.class.isAssignableFrom(parameterType)) {
                     Class<? extends Event> eventType = (Class<? extends Event>) parameterType;
                     List<Handler> listeners = eventListeners.computeIfAbsent(eventType, k -> new CopyOnWriteArrayList<>());
-                    listeners.add(ASMHandler.loadHandlerClass(listener, method));
+                    listeners.add(new ReflectHandler((Class<? extends Event>) listener, method));
                 }
             }
         }

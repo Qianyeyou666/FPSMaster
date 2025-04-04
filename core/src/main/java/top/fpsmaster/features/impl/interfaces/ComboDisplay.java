@@ -1,18 +1,20 @@
 package top.fpsmaster.features.impl.interfaces;
 
-import net.minecraft.entity.Entity;
 import top.fpsmaster.event.Subscribe;
 import top.fpsmaster.event.events.EventAttack;
 import top.fpsmaster.event.events.EventTick;
 import top.fpsmaster.features.impl.InterfaceModule;
 import top.fpsmaster.features.manager.Category;
 import top.fpsmaster.features.settings.impl.ColorSetting;
+import top.fpsmaster.interfaces.game.IEntityWrapper;
 
 import java.awt.Color;
 
+import static top.fpsmaster.FPSMaster.mc;
+
 public class ComboDisplay extends InterfaceModule {
 
-    private Entity target = null;
+    private IEntityWrapper target = null;
 
     public static int combo = 0;
     public static ColorSetting textColor = new ColorSetting("TextColor", new Color(255, 255, 255));
@@ -24,8 +26,8 @@ public class ComboDisplay extends InterfaceModule {
 
     @Subscribe
     public void onTick(EventTick e) {
-        if (ProviderManager.mcProvider.getPlayer() == null) return;
-        if (ProviderManager.mcProvider.getPlayer().hurtTime == 1 || (target != null && ProviderManager.utilityProvider.getDistanceToEntity(ProviderManager.mcProvider.getPlayer(), target) > 7)) {
+        if (mc.getPlayer() == null) return;
+        if (mc.getPlayer().getHurtTime() == 1 || (target != null && target.getDistanceToEntity((IEntityWrapper) mc.getPlayer()) > 7)) {
             combo = 0;
         }
         if (target != null && target.isEntityAlive() && target.hurtResistantTime == 19) {

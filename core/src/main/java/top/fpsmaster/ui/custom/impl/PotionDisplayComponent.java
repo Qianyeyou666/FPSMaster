@@ -1,14 +1,13 @@
 package top.fpsmaster.ui.custom.impl;
 
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.ResourceLocation;
 import top.fpsmaster.features.impl.interfaces.PotionDisplay;
+import top.fpsmaster.interfaces.game.IPotionEffectWrapper;
 import top.fpsmaster.ui.custom.Component;
 import top.fpsmaster.utils.Utility;
 
 import java.awt.Color;
+
+import static top.fpsmaster.FPSMaster.mc;
 
 public class PotionDisplayComponent extends Component {
 
@@ -23,7 +22,7 @@ public class PotionDisplayComponent extends Component {
 
         GlStateManager.pushMatrix();
 
-        for (net.minecraft.potion.PotionEffect effect : ProviderManager.mcProvider.getPlayer().getActivePotionEffects()) {
+        for (IPotionEffectWrapper effect : mc.getPlayer().getActivePotionEffects()) {
             String title = I18n.format(effect.getEffectName()) + " lv." + (effect.getAmplifier() + 1);
             String duration = (effect.getDuration() / 20 / 60) + "min" + effect.getDuration() / 20 % 60 + "s";
             float width = Math.max(getStringWidth(18, title), getStringWidth(16, duration)) + 36;
@@ -33,10 +32,10 @@ public class PotionDisplayComponent extends Component {
 
             // Draw potion image
             ResourceLocation res = new ResourceLocation("textures/gui/container/inventory.png");
-            Utility.mc.getTextureManager().bindTexture(res);
+            mc.getTextureManager().bindTexture(res);
 
             // Get potion icon index
-            int potion = ProviderManager.utilityProvider.getPotionIconIndex(effect);
+            int potion = mc.getUtilityWrapper().getPotionIconIndex(effect);
 
             // Draw potion
             Gui.drawModalRectWithCustomSizedTexture(

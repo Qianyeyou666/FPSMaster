@@ -1,5 +1,7 @@
 package top.fpsmaster.wrapper;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -13,8 +15,6 @@ import org.lwjgl.util.glu.Project;
 import top.fpsmaster.interfaces.gui.IGuiMainMenuWrapper;
 import top.fpsmaster.interfaces.gui.IGuiScreenWrapper;
 
-import static top.fpsmaster.utils.Utility.mc;
-
 public class GuiMainMenuWrapper implements IGuiMainMenuWrapper {
     private static final ResourceLocation[] TITLE_PANORAMA_PATHS = new ResourceLocation[]{new ResourceLocation("client/background/panorama_0.png"), new ResourceLocation("client/background/panorama_1.png"), new ResourceLocation("client/background/panorama_2.png"), new ResourceLocation("client/background/panorama_3.png"), new ResourceLocation("client/background/panorama_4.png"), new ResourceLocation("client/background/panorama_5.png")};
     private float panoramaTimer;
@@ -26,7 +26,7 @@ public class GuiMainMenuWrapper implements IGuiMainMenuWrapper {
      */
     public void initGui() {
         DynamicTexture viewportTexture = new DynamicTexture(256, 256);
-        this.backgroundTexture = mc.getTextureManager().getDynamicTextureLocation("background", viewportTexture);
+        this.backgroundTexture = Minecraft.getMinecraft().getTextureManager().getDynamicTextureLocation("background", viewportTexture);
     }
 
 
@@ -84,7 +84,7 @@ public class GuiMainMenuWrapper implements IGuiMainMenuWrapper {
                     GlStateManager.rotate(-90.0F, 1.0F, 0.0F, 0.0F);
                 }
 
-                mc.getTextureManager().bindTexture(TITLE_PANORAMA_PATHS[l]);
+                Minecraft.getMinecraft().getTextureManager().bindTexture(TITLE_PANORAMA_PATHS[l]);
                 bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX_COLOR);
                 int i1 = 255 / (k + 1);
                 bufferbuilder.pos(-1.0D, -1.0D, 1.0D).tex(0.0D, 0.0D).color(255, 255, 255, i1).endVertex();
@@ -114,7 +114,7 @@ public class GuiMainMenuWrapper implements IGuiMainMenuWrapper {
      * Rotate and blurs the skybox view in the main menu
      */
     public void rotateAndBlurSkybox(int width, int height, float zLevel) {
-        mc.getTextureManager().bindTexture(this.backgroundTexture);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(this.backgroundTexture);
         GL11.glTexParameteri(3553, 10241, 9729);
         GL11.glTexParameteri(3553, 10240, 9729);
         GL11.glCopyTexSubImage2D(3553, 0, 0, 0, 0, 0, 256, 256);
@@ -145,7 +145,7 @@ public class GuiMainMenuWrapper implements IGuiMainMenuWrapper {
      * Renders the skybox in the main menu
      */
     public void renderSkybox(int width, int height, float zLevel) {
-        mc.getFramebuffer().unbindFramebuffer();
+        Minecraft.getMinecraft().getFramebuffer().unbindFramebuffer();
         GlStateManager.viewport(0, 0, 256, 256);
         this.drawPanorama();
         this.rotateAndBlurSkybox(width, height, zLevel);
@@ -156,8 +156,8 @@ public class GuiMainMenuWrapper implements IGuiMainMenuWrapper {
             this.rotateAndBlurSkybox(width, height, zLevel);
         }
 
-        mc.getFramebuffer().bindFramebuffer(true);
-        GlStateManager.viewport(0, 0, mc.displayWidth, mc.displayHeight);
+        Minecraft.getMinecraft().getFramebuffer().bindFramebuffer(true);
+        GlStateManager.viewport(0, 0, Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
         float f2 = 120.0F / (float) (Math.max(width, height));
         float f = (float) height * f2 / 256.0F;
         float f1 = (float) width * f2 / 256.0F;
@@ -178,7 +178,7 @@ public class GuiMainMenuWrapper implements IGuiMainMenuWrapper {
 
     @Override
     public void showSinglePlayer(IGuiScreenWrapper screen) {
-        mc.displayGuiScreen(new GuiSelectWorld(screen));
+        Minecraft.getMinecraft().displayGuiScreen(new GuiSelectWorld((GuiScreen) screen.getObject()));
 
     }
 }

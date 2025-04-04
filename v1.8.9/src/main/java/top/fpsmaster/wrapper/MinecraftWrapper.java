@@ -12,10 +12,12 @@ import top.fpsmaster.forge.api.IMinecraft;
 import top.fpsmaster.interfaces.game.*;
 import top.fpsmaster.interfaces.gui.IFontRendererWrapper;
 import top.fpsmaster.interfaces.gui.IGuiScreenWrapper;
+import top.fpsmaster.interfaces.render.ITextureManagerWrapper;
 import top.fpsmaster.wrapper.client.INetworkPlayerInfoWrapperImpl;
 import top.fpsmaster.wrapper.entities.IEntityPlayerSPWrapperImpl;
 import top.fpsmaster.wrapper.gui.IGuiScreenWrapperImpl;
 import top.fpsmaster.wrapper.render.FontRendererWrapper;
+import top.fpsmaster.wrapper.render.ITextureManagerWrapperImpl;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -89,6 +91,11 @@ public class MinecraftWrapper implements IMinecraftWrapper {
     @Override
     public String getVersion() {
         return "1.8.9";
+    }
+
+    @Override
+    public ITextureManagerWrapper getTextureManager() {
+        return new ITextureManagerWrapperImpl(Minecraft.getMinecraft().getTextureManager());
     }
 
     UtilityWrapper utilityWrapper = new UtilityWrapper();

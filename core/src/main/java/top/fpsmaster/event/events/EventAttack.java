@@ -1,11 +1,11 @@
 package top.fpsmaster.event.events;
 
-import net.minecraft.entity.Entity;
 import top.fpsmaster.event.Event;
+import top.fpsmaster.interfaces.game.IEntityWrapper;
 
 public class EventAttack implements Event {
-    public Entity target;
-    public EventAttack(Entity target) {
+    public IEntityWrapper target;
+    public EventAttack(IEntityWrapper target) {
         this.target = target;
     }
 }

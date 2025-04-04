@@ -9,11 +9,12 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import top.fpsmaster.FPSMaster;
 import top.fpsmaster.features.impl.optimizes.FixedInventory;
 
 import java.util.Iterator;
 
-import static top.fpsmaster.utils.Utility.mc;
+import static top.fpsmaster.FPSMaster.mc;
 
 @Mixin(InventoryEffectRenderer.class)
 public class MixinInventoryEffectRenderer extends MixinGuiContainer{
@@ -24,7 +25,7 @@ public class MixinInventoryEffectRenderer extends MixinGuiContainer{
     @Inject(method = "updateActivePotionEffects", at = @At("RETURN"))
     private void renderPotionEffects(CallbackInfo ci) {
         boolean hasVisibleEffect = false;
-        Iterator var2 = mc.thePlayer.getActivePotionEffects().iterator();
+        Iterator var2 = mc.getPlayer().getActivePotionEffects().iterator();
 
         while(var2.hasNext()) {
             PotionEffect potioneffect = (PotionEffect)var2.next();
@@ -35,7 +36,7 @@ public class MixinInventoryEffectRenderer extends MixinGuiContainer{
             }
         }
 
-        if (!mc.thePlayer.getActivePotionEffects().isEmpty() && hasVisibleEffect) {
+        if (!mc.getPlayer().getActivePotionEffects().isEmpty() && hasVisibleEffect) {
             if (FixedInventory.using){
                 this.guiLeft = (Minecraft.getMinecraft().currentScreen.width - this.xSize) / 2;
             }else {
