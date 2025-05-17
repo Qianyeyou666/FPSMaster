@@ -102,10 +102,12 @@ public class LuaManager {
                 double posX = ProviderManager.mcProvider.getPlayer().posX;
                 double posY = ProviderManager.mcProvider.getPlayer().posY;
                 double posZ = ProviderManager.mcProvider.getPlayer().posZ;
+                boolean ground = L.toBoolean(3);
                 lua.push(posX);
                 lua.push(posY);
                 lua.push(posZ);
-                return 3;
+                lua.push(ProviderManager.mcProvider.getPlayer().onGround);
+                return 4;
             });
             lua.setGlobal("getPlayerPosition");
 
